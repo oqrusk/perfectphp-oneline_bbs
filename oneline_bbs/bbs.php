@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "~//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transional.dtd">
+<!DOCTYPE html>
 <html>
 <head>
     <title>ひとこと掲示板</title>
@@ -12,7 +11,7 @@
         <br/>
         ひとこと: <input type="text" name="comment" size="60" />
         <br />
-        <input type="text" type="submit" value="送信" />
+        <input type="submit" value="送信" />
     </from>
 </body>
 </html>
