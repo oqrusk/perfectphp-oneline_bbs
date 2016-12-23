@@ -76,7 +76,7 @@ class Request
             $request_uri = substr($request_uri, 0, $pos);
         }
 
-        $path_info = (string) subst($request_uri, strlen($base_url));
+        $path_info = (string) substr($request_uri, strlen($base_url));
 
         return $path_info;
     }
