@@ -1,9 +1,5 @@
 <?php
 
-
-//namespace core;
-
-
 class Response
 {
     protected $content;

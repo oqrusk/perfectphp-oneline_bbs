@@ -1,9 +1,6 @@
 <?php
 
 
-namespace core;
-
-
 class Session
 {
     protected static $sessionStarted = false;

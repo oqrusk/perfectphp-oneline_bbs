@@ -1,7 +1,5 @@
 <?php
 
-//namespace application\core;
-
 class ClassLoader
 {
     protected $dirs;
