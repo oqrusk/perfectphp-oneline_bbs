@@ -22,7 +22,7 @@ class MiniBlogApplication extends Application
         $this->db_manager->connect('master', array(
             'dsn' => 'mysql:dbname=mini_blog;host=0.0.0.0',
             'user' => 'root',
-            'password' => ''
+            'password' => 'mysql'
         ));
     }
 }
