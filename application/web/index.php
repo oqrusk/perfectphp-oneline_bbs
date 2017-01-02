@@ -1,3 +1,5 @@
 <?php
 
-require '../bootstrap.php';
+echo "hello";
+exit;
+//require '../bootstrap.php';

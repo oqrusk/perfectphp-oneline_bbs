@@ -5,7 +5,7 @@
       <paths name="localApache">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$/oneline_bbs" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$/application" web="/" />
           </mappings>
         </serverdata>
       </paths>

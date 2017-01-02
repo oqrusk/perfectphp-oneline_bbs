@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="8737c465-4100-453b-8f22-3eac9a266569" name="localApache" url="http://localhost">
-        <fileTransfer port="0" mountedRoot="/var/www/html" accessType="MOUNT" />
+      <webServer id="8737c465-4100-453b-8f22-3eac9a266569" name="localApache" url="http://mini-blog.localhost">
+        <fileTransfer port="0" mountedRoot="/private/var/www/mini-blog.localhost" accessType="MOUNT" />
       </webServer>
     </option>
   </component>
