@@ -5,6 +5,8 @@ class AccountController extends Controller
     public function signupAction()
     {
         return $this->render(array(
+            'user_name' => '',
+            'password' => '',
             '_token' => $this->generateCsrfToken('account/signup'),
         ));
     }
@@ -16,7 +18,7 @@ class AccountController extends Controller
         }
 
         $token = $this->request->getPost('_token');
-        if( !$this->checkCsrfToken('account/signtup', $token)){
+        if( !$this->checkCsrfToken('account/signup', $token)){
             return $this->redirect('/account/singup');
         }
 
@@ -39,7 +41,7 @@ class AccountController extends Controller
             $errors[] = 'パスワードは4~30字以内で入力してください';
         }
 
-        if( count($errors) === 0){
+        if(count($errors) === 0){
             $this->db_manager->get('User')->insert($user_name, $password);
             $this->session->setAuthenticated(true);
 
