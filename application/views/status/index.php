@@ -6,9 +6,7 @@
     <input type="hidden" name="_token" value="<?php echo $this->escape($_token); ?>"/>
 
     <?php //todo エラー処理 ?>
-    <textarea name="body" cols="60" rows="2">
-        <?php echo $this->escape($body); ?>
-    </textarea>
+    <textarea name="body" cols="60" rows="2"><?php echo $this->escape($body); ?></textarea>
 
     <p><input type="submit" value="発言"></p>
 

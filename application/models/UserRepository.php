@@ -5,7 +5,7 @@ class UserRepository extends DbRepository
     public function insert($user_name, $password)
     {
         $password = $this->hashPassword($password);
-        $now = new DateTime();
+        $now = new DateTime(null, new DateTimeZone('UTC'));
 
         $sql = "INSERT INTO user(user_name, password, created_at) VALUES(:user_name, :password, :created_at)";
 
@@ -40,4 +40,14 @@ class UserRepository extends DbRepository
         return false;
     }
 
+    public function fetchAllFollowingsByUserId($user_id)
+    {
+        $sql = "
+            SELECT u.*
+            FROM user u
+                LEFT JOIN following f ON f.following_id = u.id
+            WHERE f.user_id = :user_id
+        ";
+        return $this->fetchAll($sql, array(':user_id' => $user_id));
+    }
 }

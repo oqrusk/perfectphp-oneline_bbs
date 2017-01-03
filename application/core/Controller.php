@@ -110,7 +110,7 @@ abstract class Controller
 
         if ( false !== ($pos = array_search($token, $tokens, true))){
             unset($tokens[$pos]);
-            $this->session->set($key, $token);
+            $this->session->set($key, $tokens);
 
             return true;
         }
