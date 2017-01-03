@@ -12,101 +12,199 @@
     <schema id="6" parent="1" name="sys"/>
     <schema id="7" parent="1" name="mini_blog">
       <Current>1</Current>
+      <Visible>1</Visible>
     </schema>
     <table id="8" parent="2" name="following"/>
     <table id="9" parent="2" name="status"/>
     <table id="10" parent="2" name="user"/>
-    <column id="11" parent="8" name="user_id">
+    <table id="11" parent="7" name="following"/>
+    <table id="12" parent="7" name="status"/>
+    <table id="13" parent="7" name="user"/>
+    <column id="14" parent="8" name="user_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="12" parent="8" name="following_id">
+    <column id="15" parent="8" name="following_id">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="13" parent="8" name="following_id">
+    <index id="16" parent="8" name="following_id">
       <ColNames>following_id</ColNames>
     </index>
-    <key id="14" parent="8" name="PRIMARY">
+    <key id="17" parent="8" name="PRIMARY">
       <ColNames>user_id
 following_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="15" parent="8" name="following_ibfk_1">
+    <foreign-key id="18" parent="8" name="following_ibfk_1">
       <ColNames>user_id</ColNames>
       <RefSchemaName>oneline_bbs</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="16" parent="8" name="following_ibfk_2">
+    <foreign-key id="19" parent="8" name="following_ibfk_2">
       <ColNames>following_id</ColNames>
       <RefSchemaName>oneline_bbs</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="17" parent="9" name="id">
+    <column id="20" parent="9" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="18" parent="9" name="user_id">
+    <column id="21" parent="9" name="user_id">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="19" parent="9" name="body">
+    <column id="22" parent="9" name="body">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="20" parent="9" name="created_at">
+    <column id="23" parent="9" name="created_at">
       <Position>4</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <index id="21" parent="9" name="user_id_index">
+    <index id="24" parent="9" name="user_id_index">
       <ColNames>user_id</ColNames>
     </index>
-    <key id="22" parent="9" name="PRIMARY">
+    <key id="25" parent="9" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="23" parent="9" name="status_ibfk_1">
+    <foreign-key id="26" parent="9" name="status_ibfk_1">
       <ColNames>user_id</ColNames>
       <RefSchemaName>oneline_bbs</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="24" parent="10" name="id">
+    <column id="27" parent="10" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="25" parent="10" name="user_name">
+    <column id="28" parent="10" name="user_name">
       <Position>2</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="26" parent="10" name="password">
+    <column id="29" parent="10" name="password">
       <Position>3</Position>
       <DataType>varchar(40)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="27" parent="10" name="created_at">
+    <column id="30" parent="10" name="created_at">
       <Position>4</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <index id="28" parent="10" name="user_name_index">
+    <index id="31" parent="10" name="user_name_index">
       <ColNames>user_name</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="29" parent="10" name="PRIMARY">
+    <key id="32" parent="10" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="30" parent="10" name="user_name_index">
+    <key id="33" parent="10" name="user_name_index">
+      <ColNames>user_name</ColNames>
+      <UnderlyingIndexName>user_name_index</UnderlyingIndexName>
+    </key>
+    <column id="34" parent="11" name="user_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="11" name="following_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="36" parent="11" name="following_id">
+      <ColNames>following_id</ColNames>
+    </index>
+    <key id="37" parent="11" name="PRIMARY">
+      <ColNames>user_id
+following_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="38" parent="11" name="following_ibfk_1">
+      <ColNames>user_id</ColNames>
+      <RefSchemaName>mini_blog</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="39" parent="11" name="following_ibfk_2">
+      <ColNames>following_id</ColNames>
+      <RefSchemaName>mini_blog</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="40" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="41" parent="12" name="user_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="12" name="body">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="43" parent="12" name="created_at">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="44" parent="12" name="user_id_index">
+      <ColNames>user_id</ColNames>
+    </index>
+    <key id="45" parent="12" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="46" parent="12" name="status_ibfk_1">
+      <ColNames>user_id</ColNames>
+      <RefSchemaName>mini_blog</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="47" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="48" parent="13" name="user_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="13" name="password">
+      <Position>3</Position>
+      <DataType>varchar(40)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="13" name="created_at">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <index id="51" parent="13" name="user_name_index">
+      <ColNames>user_name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="52" parent="13" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="53" parent="13" name="user_name_index">
       <ColNames>user_name</ColNames>
       <UnderlyingIndexName>user_name_index</UnderlyingIndexName>
     </key>

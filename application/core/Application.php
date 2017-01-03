@@ -18,7 +18,8 @@ abstract class Application
         $this->configure();
     }
 
-    protected function setDebugMode($debug){
+    protected function setDebugMode($debug)
+    {
         if ($debug) {
             $this->debug = true;
             ini_set('display_errors', 1);
@@ -29,7 +30,8 @@ abstract class Application
         }
     }
 
-    protected function initialize(){
+    protected function initialize()
+    {
         $this->request = new Request();
         $this->response = new Response();
         $this->session = new Session();
@@ -37,7 +39,8 @@ abstract class Application
         $this->router = new Router($this->registerRoutes());
     }
 
-    protected function configure(){
+    protected function configure()
+    {
 
     }
 
@@ -45,7 +48,8 @@ abstract class Application
 
     abstract protected function registerRoutes();
 
-    public function isDebugMode(){
+    public function isDebugMode()
+    {
         return $this->debug;
     }
 
@@ -91,9 +95,9 @@ abstract class Application
 
     public function run()
     {
-        try{
+        try {
             $params = $this->router->resolve($this->request->getPathInfo());
-            if ($params === false){
+            if ($params === false) {
                 throw new HttpNotFoundException('No route found for ' . $this->request->getPathInfo());
             }
 
@@ -103,7 +107,7 @@ abstract class Application
             $this->runAction($controller, $action, $params);
         } catch (HttpNotFoundException $e) {
             $this->render404page($e);
-        } catch (UnauthorizedActionException $e){
+        } catch (UnauthorizedActionException $e) {
             list($controller, $action) = $this->login_action;
             $this->runAction($controller, $action);
         }
@@ -127,25 +131,26 @@ abstract class Application
         $this->response->setContent($content);
     }
 
-    protected function findController($controller_class){
+    protected function findController($controller_class)
+    {
         if (!class_exists($controller_class)) {
             $controller_file = $this->getControllerDir() . '/' . $controller_class . '.php';
-        }
 
-        if (!is_readable($controller_file)) {
-            return false;
-        } else {
-            require_once $controller_file;
-
-            if (!class_exists($controller_class)) {
+            if (!is_readable($controller_file)) {
                 return false;
+            } else {
+                require_once $controller_file;
+
+                if (!class_exists($controller_class)) {
+                    return false;
+                }
             }
         }
-
         return new $controller_class($this);
     }
 
-    protected function render404page($e){
+    protected function render404page($e)
+    {
         $this->response->setStatusCode(404, 'Not found');
         $message = $this->isDebugMode() ? $e->getMessage() : 'Page not found.';
         $message = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
@@ -163,6 +168,6 @@ abstract class Application
 </body>
 </html>
 EOF
-);
+        );
     }
 }
